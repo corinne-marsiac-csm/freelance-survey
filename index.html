@@ -37,8 +37,7 @@
         /* Style unifié pour les cartes de choix */
         .option-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; }
         .option-card:checked + div .font-medium { color: #1e3a8a; }
-        .checkbox-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; }
-        .checkbox-card:checked + div .font-medium { color: #1e3a8a; }
+        .checkbox-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; color: #1e3a8a; }
         
         .progress-bar { transition: width 0.4s ease; }
         
@@ -55,7 +54,7 @@
 
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-10" id="main-header">
-        <div class="max-w-3xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="font-semibold text-lg text-slate-700">Étude Freelance CSM/AM/Care</h1>
             <div class="text-sm text-slate-500 invisible" id="step-counter-container">
                 <span id="current-step-display">1</span> / <span id="total-step-display">6</span>
@@ -68,9 +67,9 @@
 
     <!-- Main Content -->
     <main class="flex-grow flex items-center justify-center p-4">
-        <form id="surveyForm" class="w-full max-w-2xl bg-white/95 backdrop-blur-md rounded-xl shadow-2xl p-6 md:p-10 border border-white/50">
+        <form id="surveyForm" class="w-full max-w-5xl bg-white/95 backdrop-blur-md rounded-xl shadow-2xl p-6 md:p-10 border border-white/50">
             
-            <!-- Step 0: Intro -->
+            <!-- Step 0: Intro (Page 1) -->
             <div class="step active" data-step="0">
                 <div class="mb-6">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
@@ -150,29 +149,29 @@
                         </select>
                     </div>
 
-                    <!-- Q3 -->
+                    <!-- Q3 (CORRIGÉ) -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">3. Où sont basés tes clients ? (Plusieurs choix possibles)</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-white">
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Auvergne-Rhône-Alpes" class="hidden checkbox-card mr-2"> Auvergne-Rhône-Alpes</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bourgogne-Franche-Comté" class="hidden checkbox-card mr-2"> Bourgogne-Franche-Comté</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bretagne" class="hidden checkbox-card mr-2"> Bretagne</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Centre-Val de Loire" class="hidden checkbox-card mr-2"> Centre-Val de Loire</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Corse" class="hidden checkbox-card mr-2"> Corse</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Grand Est" class="hidden checkbox-card mr-2"> Grand Est</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Hauts-de-France" class="hidden checkbox-card mr-2"> Hauts-de-France</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Île-de-France" class="hidden checkbox-card mr-2"> Île-de-France</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Normandie" class="hidden checkbox-card mr-2"> Normandie</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Nouvelle-Aquitaine" class="hidden checkbox-card mr-2"> Nouvelle-Aquitaine</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Occitanie" class="hidden checkbox-card mr-2"> Occitanie</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Pays de la Loire" class="hidden checkbox-card mr-2"> Pays de la Loire</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Provence-Alpes-Côte d'Azur" class="hidden checkbox-card mr-2"> Provence-Alpes-Côte d'Azur</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="À l'étranger" class="hidden checkbox-card mr-2"> À l'étranger</label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Je ne souhaite pas répondre" class="hidden checkbox-card mr-2"> Je ne souhaite pas répondre</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Auvergne-Rhône-Alpes" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Auvergne-Rhône-Alpes</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bourgogne-Franche-Comté" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Bourgogne-Franche-Comté</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bretagne" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Bretagne</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Centre-Val de Loire" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Centre-Val de Loire</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Corse" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Corse</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Grand Est" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Grand Est</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Hauts-de-France" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Hauts-de-France</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Île-de-France" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Île-de-France</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Normandie" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Normandie</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Nouvelle-Aquitaine" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Nouvelle-Aquitaine</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Occitanie" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Occitanie</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Pays de la Loire" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Pays de la Loire</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Provence-Alpes-Côte d'Azur" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Provence-Alpes-Côte d'Azur</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="À l'étranger" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">À l'étranger</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Je ne souhaite pas répondre" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Je ne souhaite pas répondre</div></label>
                         </div>
                     </div>
 
-                    <!-- Q4 -->
+                    <!-- Q4 (NEW) -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">4. Quel est ton mode de travail actuel avec tes clients ?</label>
                         <div class="space-y-2">
@@ -186,7 +185,7 @@
                         </div>
                     </div>
 
-                    <!-- Q5 -->
+                    <!-- Q5 (Ex-Q2) -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">5. Quelle est ton activité principale aujourd’hui ?</label>
                         <div class="space-y-2">
@@ -201,7 +200,7 @@
                         </div>
                     </div>
 
-                    <!-- Q6 -->
+                    <!-- Q6 (Ex-Q3) -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">6. As-tu exercé ce métier auparavant en tant que salarié ?</label>
                         <div class="flex gap-4">
@@ -347,7 +346,7 @@
                         </div>
                     </div>
 
-                    <!-- Q15 (Updated) -->
+                    <!-- Q15 (Ex-Q12) -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">15. En moyenne, quel montant te verses-tu réellement sur ton compte personnel chaque mois (après charges professionnelles, avant impôt sur le revenu) ?</label>
                         <select name="q15" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none">
@@ -372,7 +371,7 @@
                         </div>
                     </div>
 
-                    <!-- Q17 (Updated Text) -->
+                    <!-- Q17 -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">17. Pour tes déclarations (URSSAF, TVA), comment t'organises-tu ?</label>
                         <div class="space-y-2">
@@ -609,7 +608,7 @@
             'q10_clients': 'Q10. Typologie clients',
             'q10_clients_other_text': 'Autre type client',
             'q11': 'Q11. Difficulté vente',
-            'q12_gap': 'Q12. Périodes sans mission',
+            'q12_gap': 'Périodes sans mission',
             'q12_gap_duration': 'Durée sans mission',
             'q13': 'Q13. Délai revenus réguliers',
             'q14': 'Q14. TJM minimal viable',
@@ -765,6 +764,7 @@
         }
 
         function quitSurvey() {
+            // Suppression de confirm() qui bloque dans l'iframe
             // Hide all steps
             const steps = document.querySelectorAll('.step');
             steps.forEach(step => step.classList.remove('active'));
@@ -809,22 +809,31 @@
                 let borderClass = 'border-b border-slate-100'; 
                 let isMissing = false;
 
-                // Check dependencies
+                // Check dependencies for required fields
                 let isActuallyRequired = requiredFields.includes(key);
 
+                // Conditional requirements logic
                 if (key === 'q6_exp') {
+                    // Required only if Q6 is Oui
                     if (!groupedData['q6'] || !groupedData['q6'].includes('Oui')) isActuallyRequired = false;
                 }
                 if (key === 'q12_gap_duration') {
+                    // Required only if Q12 is Oui (using logic from HTML structure)
+                    // The HTML name is q12_gap
                     if (!groupedData['q12_gap'] || !groupedData['q12_gap'].includes('Oui')) isActuallyRequired = false;
-                    else isActuallyRequired = true; 
+                    else isActuallyRequired = true; // Force requirement if Yes
                 }
                 
+                // Special handling for "Autre" text fields requirements
+                // We check if parent has "Autre" or similar trigger, then check if text field is filled
+                // Note: The loop iterates over keys. q4 is processed, then q4_other is implicit in q4 display below.
+                // But we need to validate if q4=Autre and text is missing.
+
                 if (groupedData[key]) {
                     let values = groupedData[key];
                     let displayValue = values.join(', ');
                     
-                    // Validation dynamique des champs "Autre"
+                    // Append specific 'other' text details dynamically
                     if (key === 'q4' && values.includes('Autre')) {
                         if (groupedData['q4_other']) displayValue += ' (' + groupedData['q4_other'] + ')';
                         else { isMissing = true; displayValue += ' <span class="error-text">(Précision manquante)</span>'; }
@@ -838,7 +847,9 @@
                         else { isMissing = true; displayValue += ' <span class="error-text">(Précision manquante)</span>'; }
                     }
                     if (key === 'q15' && values.includes('Autre')) {
-                        if (groupedData['q15_other']) displayValue += ' (' + groupedData['q15_other'] + ')';
+                        if (groupedData['q15_other']) displayValue += ' (' + groupedData['q15_other'] + ')'; // Note: HTML uses q15_other in select toggle? Check logic. 
+                        // HTML uses toggleOtherInput for Q19 (Ex-Q18), wait. 
+                        // Q15 is Revenue. It does NOT have "Autre" in HTML options above.
                     }
                     if (key === 'q17' && values.includes('App')) {
                         if (groupedData['q17_app_name']) displayValue += ' (' + groupedData['q17_app_name'] + ')';
