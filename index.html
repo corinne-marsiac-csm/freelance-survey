@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enquête Freelance CSM/AM/Care - Corinne</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Police Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { 
@@ -15,6 +17,7 @@
             background-attachment: fixed;
             position: relative;
         }
+        /* Filtre sombre pour lisibilité */
         body::before {
             content: "";
             position: fixed;
@@ -31,8 +34,11 @@
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Style unifié pour Checkbox et Radio en mode "Carte" */
-        .option-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; color: #1e3a8a; }
+        /* Style unifié pour les cartes de choix */
+        .option-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; }
+        .option-card:checked + div .font-medium { color: #1e3a8a; }
+        .checkbox-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; }
+        .checkbox-card:checked + div .font-medium { color: #1e3a8a; }
         
         .progress-bar { transition: width 0.4s ease; }
         
@@ -41,7 +47,7 @@
         .summary-answer { font-weight: 500; color: #0f172a; }
         .error-text { color: #dc2626; font-weight: 600; }
         
-        /* Classe utilitaire pour cacher le compteur */
+        /* Classe pour cacher le compteur */
         .invisible { visibility: hidden; }
     </style>
 </head>
@@ -64,7 +70,7 @@
     <main class="flex-grow flex items-center justify-center p-4">
         <form id="surveyForm" class="w-full max-w-2xl bg-white/95 backdrop-blur-md rounded-xl shadow-2xl p-6 md:p-10 border border-white/50">
             
-            <!-- Step 0: Intro (Page 1) -->
+            <!-- Step 0: Intro -->
             <div class="step active" data-step="0">
                 <div class="mb-6">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
@@ -148,25 +154,25 @@
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">3. Où sont basés tes clients ? (Plusieurs choix possibles)</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-white">
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Auvergne-Rhône-Alpes" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Auvergne-Rhône-Alpes</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bourgogne-Franche-Comté" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Bourgogne-Franche-Comté</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bretagne" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Bretagne</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Centre-Val de Loire" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Centre-Val de Loire</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Corse" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Corse</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Grand Est" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Grand Est</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Hauts-de-France" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Hauts-de-France</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Île-de-France" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Île-de-France</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Normandie" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Normandie</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Nouvelle-Aquitaine" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Nouvelle-Aquitaine</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Occitanie" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Occitanie</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Pays de la Loire" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Pays de la Loire</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Provence-Alpes-Côte d'Azur" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Provence-Alpes-Côte d'Azur</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="À l'étranger" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">À l'étranger</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Je ne souhaite pas répondre" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50">Je ne souhaite pas répondre</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Auvergne-Rhône-Alpes" class="hidden checkbox-card mr-2"> Auvergne-Rhône-Alpes</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bourgogne-Franche-Comté" class="hidden checkbox-card mr-2"> Bourgogne-Franche-Comté</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bretagne" class="hidden checkbox-card mr-2"> Bretagne</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Centre-Val de Loire" class="hidden checkbox-card mr-2"> Centre-Val de Loire</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Corse" class="hidden checkbox-card mr-2"> Corse</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Grand Est" class="hidden checkbox-card mr-2"> Grand Est</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Hauts-de-France" class="hidden checkbox-card mr-2"> Hauts-de-France</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Île-de-France" class="hidden checkbox-card mr-2"> Île-de-France</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Normandie" class="hidden checkbox-card mr-2"> Normandie</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Nouvelle-Aquitaine" class="hidden checkbox-card mr-2"> Nouvelle-Aquitaine</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Occitanie" class="hidden checkbox-card mr-2"> Occitanie</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Pays de la Loire" class="hidden checkbox-card mr-2"> Pays de la Loire</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Provence-Alpes-Côte d'Azur" class="hidden checkbox-card mr-2"> Provence-Alpes-Côte d'Azur</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="À l'étranger" class="hidden checkbox-card mr-2"> À l'étranger</label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Je ne souhaite pas répondre" class="hidden checkbox-card mr-2"> Je ne souhaite pas répondre</label>
                         </div>
                     </div>
 
-                    <!-- Q4 (NEW) -->
+                    <!-- Q4 -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">4. Quel est ton mode de travail actuel avec tes clients ?</label>
                         <div class="space-y-2">
@@ -180,7 +186,7 @@
                         </div>
                     </div>
 
-                    <!-- Q5 (Ex-Q2) -->
+                    <!-- Q5 -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">5. Quelle est ton activité principale aujourd’hui ?</label>
                         <div class="space-y-2">
@@ -195,7 +201,7 @@
                         </div>
                     </div>
 
-                    <!-- Q6 (Ex-Q3) -->
+                    <!-- Q6 -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">6. As-tu exercé ce métier auparavant en tant que salarié ?</label>
                         <div class="flex gap-4">
@@ -255,7 +261,667 @@
                     <div>
                         <label class="block font-medium text-slate-700 mb-3">9. Comment trouves-tu tes clients majoritairement ? (Plusieurs choix possibles)</label>
                         <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Réseau" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Réseau personnel / Bouche-à-oreille</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Plateformes" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Plateformes (Malt, Crème de la crème...)</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Prospection" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Prospection directe (LinkedIn, Cold Email)</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Apporteur" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Réseau" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Réseau personnel / Bouche-à-oreille</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Plateformes" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Plateformes (Malt, Crème de la crème...)</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Prospection" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Prospection directe (LinkedIn, Cold Email)</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Apporteur" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Apport d'affaires / Agences</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Q10: Typologie Clients (Checkbox + Autre) -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">10. Pour quels types de clients as-tu déjà travaillé en freelance ? (Plusieurs choix possibles)</label>
+                        <div class="grid grid-cols-1 gap-2">
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Startup (early stage)" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Startup (early stage)</span><span class="block text-xs text-slate-500 mt-1">(jeune entreprise, souvent < 20 salariés)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Scale-up" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Scale-up</span><span class="block text-xs text-slate-500 mt-1">(startup en forte croissance, environ 50 à 300 salariés)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="PME" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">PME</span><span class="block text-xs text-slate-500 mt-1">(Petite ou Moyenne Entreprise, < 250 salariés)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="ETI" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">ETI</span><span class="block text-xs text-slate-500 mt-1">(Entreprise de Taille Intermédiaire, 250 à 4 999 salariés)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Grand groupe" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Grand groupe</span><span class="block text-xs text-slate-500 mt-1">(≥ 5 000 salariés ou groupe international structuré)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Freelance / Indépendant" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Freelance / indépendant</span><span class="block text-xs text-slate-500 mt-1">(autre freelance, consultant indépendant, solopreneur)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Agence" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Agence</span><span class="block text-xs text-slate-500 mt-1">(ex. agence digitale, marketing, CRM, ESN, cabinet de conseil)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Collectif de freelances" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Collectif de freelances</span><span class="block text-xs text-slate-500 mt-1">(regroupement de freelances travaillant ensemble sur des missions)</span></div></label>
+                            <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Autre" class="hidden checkbox-card" onchange="toggleCheckboxOther(this, 'q10_clients_other')"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Autre (à préciser)</span></div></label>
+                        </div>
+                        <input type="text" id="q10_clients_other" name="q10_clients_other_text" placeholder="Préciser..." class="w-full mt-2 border border-slate-300 rounded-lg p-2 text-sm focus:border-blue-500 outline-none hidden">
+                    </div>
+
+                    <!-- Q11 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">11. Est-il difficile de convaincre une entreprise de prendre un freelance sur des métiers "Relation Client" ?</label>
+                        <div class="space-y-2">
+                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Très difficile" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Très difficile (beaucoup de pédagogie nécessaire)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Moyennement difficile" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Moyennement difficile</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Non" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Non, les entreprises sont habituées</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Q12 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">12. T'est-il déjà arrivé de te retrouver sans mission pendant une longue période ?</label>
+                        <div class="space-y-3">
+                            <div class="flex gap-4">
+                                <label class="cursor-pointer flex-1"><input type="radio" name="q12_gap" value="Oui" class="hidden option-card" onchange="toggleInput('gap_duration_container', true)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Oui</div></label>
+                                <label class="cursor-pointer flex-1"><input type="radio" name="q12_gap" value="Non" class="hidden option-card" onchange="toggleInput('gap_duration_container', false)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Non</div></label>
+                            </div>
+                            <div id="gap_duration_container" class="hidden mt-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <label class="block text-sm text-slate-600 mb-2">Si oui, pendant combien de temps ?</label>
+                                <input type="text" name="q12_gap_duration" placeholder="Ex: 2 mois entre deux contrats..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="goToStep(1)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
+                    <button type="button" onclick="goToStep(3)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Suivant</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Finance (Page 4) -->
+            <div class="step" data-step="3">
+                <h3 class="text-xl font-semibold mb-6">Partie 3 : Réalité Financière & Organisation</h3>
+                
+                <div class="space-y-6">
+                    <!-- Q13 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">13. Combien de temps après ton lancement as-tu commencé à générer des revenus réguliers ?</label>
+                        <select name="q13" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none">
+                            <option value="">Sélectionne une option...</option>
+                            <option value="Immédiatement">Immédiatement</option>
+                            <option value="Moins de 3 mois">Moins de 3 mois</option>
+                            <option value="3 à 6 mois">3 à 6 mois</option>
+                            <option value="6 à 12 mois">6 à 12 mois</option>
+                            <option value="Plus d'un an">Plus d'un an</option>
+                            <option value="Pas encore">Pas encore</option>
+                        </select>
+                    </div>
+
+                    <!-- Q14 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">14. Selon toi, quel est le TJM minimal pour être viable ?</label>
+                        <div class="grid grid-cols-2 gap-2">
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value="<300" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Moins de 300€</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value="300-350" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">300€ - 350€</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value="350-450" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">350€ - 450€</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value=">450" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Plus de 450€</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Q15 (Updated) -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">15. En moyenne, quel montant te verses-tu réellement sur ton compte personnel chaque mois (après charges professionnelles, avant impôt sur le revenu) ?</label>
+                        <select name="q15" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none">
+                            <option value="">Sélectionne une option...</option>
+                            <option value="<2000">Moins de 2000€</option>
+                            <option value="2000-3000">Entre 2000€ et 3000€</option>
+                            <option value="3000-4500">Entre 3000€ et 4500€</option>
+                            <option value=">4500">Plus de 4500€</option>
+                            <option value="N/A">Je préfère ne pas répondre</option>
+                        </select>
+                    </div>
+
+                     <!-- Q16 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">16. Quel statut juridique as-tu choisi ?</label>
+                        <div class="space-y-2">
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Micro-entreprise" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Micro-entreprise (Auto-entrepreneur)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="EI" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">EI (Entreprise Individuelle)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Société" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Société (EURL, SASU...)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Portage Salarial" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Portage Salarial</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Autre" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Autre</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Q17 (Updated Text) -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">17. Pour tes déclarations (URSSAF, TVA), comment t'organises-tu ?</label>
+                        <div class="space-y-2">
+                            <label class="cursor-pointer block">
+                                <input type="radio" name="q17" value="Manuel" class="hidden option-card" onchange="toggleInput('q17_app_container', false)">
+                                <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Je gère moi-même mes déclarations, de façon autonome</div>
+                            </label>
+                            
+                            <!-- Option APP et son champ lié -->
+                            <div>
+                                <label class="cursor-pointer block">
+                                    <input type="radio" name="q17" value="App" class="hidden option-card" onchange="toggleInput('q17_app_container', true)">
+                                    <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">J’utilise un outil ou une application pour m’accompagner dans mes déclarations</div>
+                                </label>
+                                <div id="q17_app_container" class="hidden mt-2 ml-4 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                     <label class="block text-sm text-slate-600 mb-2">Quelle application utilises-tu ? (Indy, Abby, Tiime...)</label>
+                                     <input type="text" name="q17_app_name" placeholder="Ex: Indy, Freebe..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                                </div>
+                            </div>
+
+                            <label class="cursor-pointer block">
+                                <input type="radio" name="q17" value="Comptable" class="hidden option-card" onchange="toggleInput('q17_app_container', false)">
+                                <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Je délègue ces démarches à un expert-comptable</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="goToStep(2)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
+                    <button type="button" onclick="goToStep(4)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Suivant</button>
+                </div>
+            </div>
+
+             <!-- Step 4: Charge Mentale (Page 5) -->
+             <div class="step" data-step="4">
+                <h3 class="text-xl font-semibold mb-6">Partie 4 : Charge Mentale</h3>
+                
+                <div class="space-y-6">
+                    <!-- Q18 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">18. Par rapport au salariat, le freelance a été pour toi :</label>
+                         <div class="space-y-2">
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Beaucoup plus stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Beaucoup plus stressant 😰</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Un peu plus stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Un peu plus stressant 😟</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Équivalent" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Équivalent 😐</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Moins stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Moins stressant 😌</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Q19 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">19. Ce qui te pèse le plus aujourd’hui :</label>
+                        <select name="q19" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none" onchange="toggleSelectOther(this, 'q19_other_container')">
+                            <option value="">Sélectionne...</option>
+                            <option value="Trouver des clients">Trouver des clients (l'incertitude commerciale)</option>
+                            <option value="Irrégularité revenus">L’irrégularité des revenus</option>
+                            <option value="Administratif">La gestion administrative</option>
+                            <option value="Charge mentale">La charge mentale (ne jamais couper)</option>
+                            <option value="Solitude">La solitude</option>
+                            <option value="Autre">Autre (préciser)</option>
+                        </select>
+                        <div id="q19_other_container" class="hidden mt-2">
+                             <input type="text" name="q19_other" placeholder="Précise ce qui te pèse..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Q20 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">20. La chose la plus difficile à laquelle tu ne t’attendais pas ?</label>
+                        <textarea name="q20" rows="3" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none" placeholder="Ta réponse..."></textarea>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="goToStep(3)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
+                    <button type="button" onclick="goToStep(5)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Suivant</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Bilan (Page 6) -->
+            <div class="step" data-step="5">
+                <h3 class="text-xl font-semibold mb-6">Partie 5 : Bilan & Conseils</h3>
+                
+                <div class="space-y-6">
+                    <!-- Q21 (Checkbox + Autre) -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">21. Selon toi, quels sont les arguments de vente qui priment ? (Plusieurs choix possibles)</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Formation / Certifications" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Formation / Certifications</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Expérience passée" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Expérience passée</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Réseau" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Réseau / Recommandations</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Soft Skills / Personnalité" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Soft Skills / Personnalité</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Prix / TJM" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Prix / TJM</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Autre" class="hidden checkbox-card" onchange="toggleCheckboxOther(this, 'q21_args_other')"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Autre</div></label>
+                        </div>
+                        <input type="text" id="q21_args_other" name="q21_args_other_text" placeholder="Préciser..." class="w-full mt-2 border border-slate-300 rounded-lg p-2 text-sm focus:border-blue-500 outline-none hidden">
+                    </div>
+
+                    <!-- Q22 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">22. Recommanderais-tu de se lancer en 2026 ?</label>
+                        <div class="space-y-2">
+                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Oui" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Oui, c'est le bon moment 🚀</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Oui mais" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Oui, mais avec beaucoup de prudence ⚠️</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Non" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Non, le marché est trop saturé ⛔</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Q23 -->
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-3">23. Si tu avais un seul conseil factuel à donner :</label>
+                        <textarea name="q23" rows="3" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none" placeholder="Ton conseil en or..."></textarea>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="goToStep(4)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
+                    <button type="button" onclick="goToStep(6)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Dernière étape</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Restitution (Page 7) -->
+            <div class="step" data-step="6">
+                <h3 class="text-xl font-semibold mb-6">Restitution des résultats</h3>
+                
+                <div class="text-center py-6">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <p class="text-slate-600 mb-6">
+                        Merci beaucoup pour ton temps ! <br>
+                        Si tu souhaites recevoir l'analyse globale des réponses (TJM moyen, conseils...), laisse tes coordonnées ci-dessous.
+                    </p>
+                    
+                    <div class="space-y-4 max-w-sm mx-auto mb-6">
+                        <input type="text" name="pseudo" placeholder="Prénom ou Pseudo (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none">
+                        <input type="email" name="email" placeholder="ton@email.com (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none">
+                        <input type="url" name="linkedin" placeholder="Lien profil LinkedIn (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none">
+                    </div>
+
+                    <button type="button" onclick="goToStep(7)" class="w-full max-w-sm bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:-translate-y-1">
+                        Vérifier mes réponses
+                    </button>
+                </div>
+                 <div class="flex justify-start mt-8">
+                    <button type="button" onclick="goToStep(5)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
+                </div>
+            </div>
+
+            <!-- Step 7: Récapitulatif (Page 8) -->
+            <div class="step" data-step="7">
+                <h3 class="text-xl font-semibold mb-6">Récapitulatif avant envoi</h3>
+                
+                <div class="bg-slate-50 rounded-lg p-6 max-h-[60vh] overflow-y-auto mb-6 border border-slate-200" id="summaryContainer">
+                    <!-- Le résumé sera généré ici par JS -->
+                </div>
+
+                <!-- Message d'erreur caché par défaut -->
+                <div id="error-message" class="hidden mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-200 text-center font-medium">
+                    Oups, je crois que tu n’as pas encore terminé 🙂 Il reste quelques réponses à compléter avant l’envoi.
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-between mt-8 gap-4">
+                    <button type="button" onclick="goToStep(6)" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-6 rounded-lg transition-colors">
+                        Modifier
+                    </button>
+                    <button type="button" onclick="finishSurvey()" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:-translate-y-1">
+                        Envoyer
+                    </button>
+                    <button type="button" onclick="quitSurvey()" class="flex-1 bg-red-100 hover:bg-red-200 text-red-700 font-bold py-3 px-6 rounded-lg transition-colors border border-red-200">
+                        Quitter sans participer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 8: Thank You -->
+            <div class="step" data-step="8">
+                <div class="text-center py-10">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 animate-bounce">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-4">Merci infiniment ! 🙏</h2>
+                    <p class="text-slate-600 mb-2">Tes réponses ont bien été enregistrées.</p>
+                    <p class="text-slate-500 text-sm mb-6">Tu peux fermer cette page.</p>
+                </div>
+            </div>
+
+            <!-- Step 9: Quit (Hidden by default) -->
+            <div class="step" id="step-quit">
+                <div class="text-center py-10">
+                    <div class="text-6xl mb-4">🥺</div>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-4">Dommage !</h2>
+                    <p class="text-slate-600 mb-6">Je ne t'en veux pas. Une prochaine fois peut-être.</p>
+                    
+                    <button type="button" onclick="location.reload()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-md">
+                        Recommencer à zéro
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+    <footer class="text-center p-4 text-white/80 text-sm z-10 relative"></footer>
+
+    <!-- Configuration pour Google Sheets (Optionnel) -->
+    <script>
+        // --- CONFIGURATION TECHNIQUE ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby2OG8Ewm-bjoauyP_tZbJ6hiqswNPBkyZmSWpdLJwSfNjqkCq776bluDeYbm8sFi3lxQ/exec'; 
+    </script>
+
+    <script>
+        // Configuration de la navigation
+        const totalStepsQuestions = 6; 
+
+        const questionLabels = {
+            'q1': 'Q1. Ancienneté freelance',
+            'q2': 'Q2. Localisation Freelance',
+            'q3': 'Q3. Localisation Clients',
+            'q4': 'Q4. Mode de travail',
+            'q4_other': 'Q4. Mode (Autre)',
+            'q5': 'Q5. Activité principale',
+            'q5_other': 'Q5. Activité (Autre)',
+            'q6': 'Q6. Ex-salarié du métier',
+            'q6_exp': 'Années expérience salariée',
+            'genre': 'Q7. Sexe',
+            'age': 'Q8. Tranche d\'âge',
+            'q9': 'Q9. Acquisition clients',
+            'q10_clients': 'Q10. Typologie clients',
+            'q10_clients_other_text': 'Autre type client',
+            'q11': 'Q11. Difficulté vente',
+            'q12_gap': 'Q12. Périodes sans mission',
+            'q12_gap_duration': 'Durée sans mission',
+            'q13': 'Q13. Délai revenus réguliers',
+            'q14': 'Q14. TJM minimal viable',
+            'q15': 'Q15. Montant versé perso',
+            'q16_status': 'Q16. Statut juridique',
+            'q17': 'Q17. Gestion déclarations',
+            'q17_app_name': 'Nom de l\'application',
+            'q18': 'Q18. Niveau de stress',
+            'q19': 'Q19. Poids principal',
+            'q19_other': 'Autre poids',
+            'q20': 'Q20. Difficulté inattendue',
+            'q21_args': 'Q21. Arguments de vente',
+            'q21_args_other_text': 'Autre argument',
+            'q22': 'Q22. Avis lancement 2026',
+            'q23': 'Q23. Conseil clé',
+            'pseudo': 'Contact - Prénom / Pseudo',
+            'email': 'Contact - Email',
+            'linkedin': 'Contact - LinkedIn'
+        };
+
+        // Liste des champs requis pour valider l'envoi (basé sur les noms HTML)
+        const requiredFields = [
+            'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'genre', 'age', 
+            'q9', 'q10_clients', 'q11', 'q12_gap', 
+            'q13', 'q14', 'q15', 'q16_status', 'q17', 
+            'q18', 'q19', 'q20', 
+            'q21_args', 'q22', 'q23'
+        ];
+
+        function goToStep(stepIndex) {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => {
+                if (step.id === 'step-quit') return; 
+                
+                if (step.dataset.step == stepIndex) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            // Update Progress Bar
+            let progress = 0;
+            if (stepIndex > 0 && stepIndex <= totalStepsQuestions + 1) { 
+                progress = Math.min(((stepIndex) / (totalStepsQuestions + 1)) * 100, 100);
+            }
+            
+            document.getElementById('progress').style.width = `${progress}%`;
+            
+            const stepCountEl = document.getElementById('current-step-display');
+            const totalStepsEl = document.getElementById('total-step-display');
+            const counterContainer = document.getElementById('step-counter-container');
+
+            if (stepIndex === 0 || stepIndex === 8) {
+                 if(counterContainer) counterContainer.style.visibility = 'hidden'; 
+            } else {
+                 if(counterContainer) counterContainer.style.visibility = 'visible';
+            }
+            
+            if (stepIndex > 0 && stepIndex <= totalStepsQuestions) {
+                stepCountEl.innerText = stepIndex;
+                totalStepsEl.innerText = totalStepsQuestions;
+            } else if (stepIndex === 7) {
+                // Etape Recap
+                stepCountEl.innerText = "Fin";
+                totalStepsEl.innerText = totalStepsQuestions;
+                renderSummary(); // Generate summary when reaching step 7
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        // Gestion générique pour afficher/masquer un input lié à un radio/select
+        function toggleInput(containerId, shouldShow) {
+            const container = document.getElementById(containerId);
+            if (shouldShow) {
+                container.classList.remove('hidden');
+                container.classList.add('block');
+            } else {
+                container.classList.remove('block');
+                container.classList.add('hidden');
+                // Optionnel : vider le champ
+                const input = container.querySelector('input');
+                if(input) input.value = '';
+                const radios = container.querySelectorAll('input[type="radio"]');
+                radios.forEach(r => r.checked = false);
+            }
+        }
+
+        // Gestion spécifique pour les Select avec option "Autre"
+        function toggleSelectOther(selectElement, containerId) {
+            toggleInput(containerId, selectElement.value === 'Autre');
+        }
+
+        // Gestion spécifique pour les Checkboxes "Autre"
+        function toggleCheckboxOther(checkbox, inputId) {
+            const input = document.getElementById(inputId);
+            if (checkbox.checked) {
+                input.classList.remove('hidden');
+            } else {
+                input.classList.add('hidden');
+                input.value = '';
+            }
+        }
+
+        function toggleQ4Input(show) {
+            const container = document.getElementById('q4_other_container');
+            if (show) {
+                container.classList.remove('hidden');
+                container.classList.add('block');
+            } else {
+                container.classList.remove('block');
+                container.classList.add('hidden');
+                const input = container.querySelector('input');
+                if(input) input.value = '';
+            }
+        }
+
+        function toggleQ6Input(show) {
+            const container = document.getElementById('q6_exp_container');
+            if (show) {
+                container.classList.remove('hidden');
+                container.classList.add('block');
+            } else {
+                container.classList.remove('block');
+                container.classList.add('hidden');
+                // Clear selection
+                const radios = document.getElementsByName('q6_exp');
+                radios.forEach(r => r.checked = false);
+            }
+        }
+
+        function toggleOtherInput(value) {
+            const container = document.getElementById('q19_other_container'); // Fixed ID for Q19
+            if (value === 'Autre') {
+                container.classList.remove('hidden');
+                container.classList.add('block');
+            } else {
+                container.classList.remove('block');
+                container.classList.add('hidden');
+            }
+        }
+
+        function toggleAppInput(show) {
+            const container = document.getElementById('q17_app_container');
+            if (show) {
+                container.classList.remove('hidden');
+                container.classList.add('block');
+            } else {
+                container.classList.remove('block');
+                container.classList.add('hidden');
+            }
+        }
+
+        function quitSurvey() {
+            // Hide all steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => step.classList.remove('active'));
+            
+            // Show quit step
+            const quitStep = document.getElementById('step-quit');
+            quitStep.classList.add('active');
+            
+            // Hide header counter
+            const counterContainer = document.getElementById('step-counter-container');
+            if(counterContainer) counterContainer.style.visibility = 'hidden';
+
+            window.scrollTo(0, 0);
+        }
+
+        function renderSummary() {
+            const formData = new FormData(document.getElementById('surveyForm'));
+            const container = document.getElementById('summaryContainer');
+            let html = '';
+
+            // Group data
+            let groupedData = {};
+            for (let [key, value] of formData.entries()) {
+                if (value && value.trim() !== "") {
+                    if (!groupedData[key]) groupedData[key] = [];
+                    groupedData[key].push(value);
+                }
+            }
+
+            const summaryOrder = [
+                'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q6_exp', 'genre', 'age',
+                'q9', 'q10_clients', 'q11', 'q12_gap', 'q12_gap_duration',
+                'q13', 'q14', 'q15', 'q16_status', 'q17',
+                'q18', 'q19', 'q20',
+                'q21_args', 'q22', 'q23',
+                'pseudo', 'email', 'linkedin'
+            ];
+
+            for (let key of summaryOrder) {
+                let label = questionLabels[key] || key;
+                let valueHtml = '';
+                let borderClass = 'border-b border-slate-100'; 
+                let isMissing = false;
+
+                // Check dependencies
+                let isActuallyRequired = requiredFields.includes(key);
+
+                if (key === 'q6_exp') {
+                    if (!groupedData['q6'] || !groupedData['q6'].includes('Oui')) isActuallyRequired = false;
+                }
+                if (key === 'q12_gap_duration') {
+                    if (!groupedData['q12_gap'] || !groupedData['q12_gap'].includes('Oui')) isActuallyRequired = false;
+                    else isActuallyRequired = true; 
+                }
+                
+                if (groupedData[key]) {
+                    let values = groupedData[key];
+                    let displayValue = values.join(', ');
+                    
+                    // Validation dynamique des champs "Autre"
+                    if (key === 'q4' && values.includes('Autre')) {
+                        if (groupedData['q4_other']) displayValue += ' (' + groupedData['q4_other'] + ')';
+                        else { isMissing = true; displayValue += ' <span class="error-text">(Précision manquante)</span>'; }
+                    }
+                    if (key === 'q5' && values.includes('Autre')) {
+                        if (groupedData['q5_other']) displayValue += ' (' + groupedData['q5_other'] + ')';
+                        else { isMissing = true; displayValue += ' <span class="error-text">(Précision manquante)</span>'; }
+                    }
+                    if (key === 'q10_clients' && values.includes('Autre')) {
+                        if (groupedData['q10_clients_other_text']) displayValue += ' (' + groupedData['q10_clients_other_text'] + ')';
+                        else { isMissing = true; displayValue += ' <span class="error-text">(Précision manquante)</span>'; }
+                    }
+                    if (key === 'q15' && values.includes('Autre')) {
+                        if (groupedData['q15_other']) displayValue += ' (' + groupedData['q15_other'] + ')';
+                    }
+                    if (key === 'q17' && values.includes('App')) {
+                        if (groupedData['q17_app_name']) displayValue += ' (' + groupedData['q17_app_name'] + ')';
+                        else { isMissing = true; displayValue += ' <span class="error-text">(Nom de l\'app manquant)</span>'; }
+                    }
+                    if (key === 'q19' && values.includes('Autre')) {
+                        if (groupedData['q19_other']) displayValue += ' (' + groupedData['q19_other'] + ')';
+                        else { isMissing = true; displayValue += ' <span class="error-text">(Précision manquante)</span>'; }
+                    }
+                    if (key === 'q21_args' && values.includes('Autre')) {
+                        if (groupedData['q21_args_other_text']) displayValue += ' (' + groupedData['q21_args_other_text'] + ')';
+                        else { isMissing = true; displayValue += ' <span class="error-text">(Précision manquante)</span>'; }
+                    }
+
+                    if (isMissing) {
+                         borderClass = 'border-b border-red-100 bg-red-50';
+                    }
+
+                    valueHtml = `<div class="summary-answer text-slate-800 font-medium">${displayValue}</div>`;
+                } else {
+                    if (isActuallyRequired) {
+                        isMissing = true;
+                        valueHtml = `<div class="summary-answer text-red-600 font-bold flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Non renseigné
+                                     </div>`;
+                        borderClass = 'border-b border-red-100 bg-red-50';
+                    } else {
+                        valueHtml = `<div class="summary-answer text-slate-400 italic">Non renseigné (Facultatif ou N/A)</div>`;
+                    }
+                }
+
+                html += `
+                    <div class="summary-item ${borderClass} p-3 rounded-lg mb-1" data-key="${key}" data-missing="${isMissing}">
+                        <div class="summary-question text-sm text-slate-500 mb-1">${label}</div>
+                        ${valueHtml}
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function finishSurvey() {
+            // Re-run validation logic based on rendered summary status
+            // This ensures logic matches exactly what user sees
+            renderSummary(); 
+            const container = document.getElementById('summaryContainer');
+            const missingItems = container.querySelectorAll('[data-missing="true"]');
+
+            if (missingItems.length > 0) {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.classList.remove('hidden');
+                errorDiv.scrollIntoView({ behavior: 'smooth' });
+                return; 
+            }
+
+            // Proceed to send
+            const formData = new FormData(document.getElementById('surveyForm'));
+            const dataMap = new Map();
+            for (let [key, value] of formData.entries()) {
+                if (value && value.trim() !== "") {
+                    if (dataMap.has(key)) dataMap.set(key, dataMap.get(key) + ', ' + value);
+                    else dataMap.set(key, value);
+                }
+            }
+            
+            const finalFormData = new FormData();
+            dataMap.forEach((value, key) => finalFormData.append(key, value));
+            
+            if (typeof SCRIPT_URL !== 'undefined' && SCRIPT_URL.length > 5) {
+                fetch(SCRIPT_URL, { method: 'POST', body: finalFormData })
+                .then(res => console.log('Success'))
+                .catch(err => console.error('Error', err));
+            } else {
+                console.log("Simulation", Object.fromEntries(dataMap));
+            }
+
+            goToStep(8);
+        }
+
+        // Init
+        goToStep(0);
+    </script>
+</body>
+</html>
