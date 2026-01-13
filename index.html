@@ -7,7 +7,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Police Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { 
             font-family: 'Inter', sans-serif;
@@ -35,19 +35,27 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
         /* Style unifié pour les cartes de choix */
-        .option-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; }
-        .option-card:checked + div .font-medium { color: #1e3a8a; }
-        .checkbox-card:checked + div { border-color: #3B82F6; background-color: #EFF6FF; color: #1e3a8a; }
+        .option-card:checked + div { border-color: #4F46E5; background-color: #EEF2FF; } /* Indigo-600 / Indigo-50 */
+        .option-card:checked + div .option-text { color: #312E81; font-weight: 600; } /* Indigo-900 */
         
-        .progress-bar { transition: width 0.4s ease; }
+        .checkbox-card:checked + div { border-color: #4F46E5; background-color: #EEF2FF; }
+        .checkbox-card:checked + div .option-text { color: #312E81; font-weight: 600; }
         
-        .summary-item { margin-bottom: 8px; }
-        .summary-question { font-size: 0.85rem; color: #64748b; margin-bottom: 2px; }
-        .summary-answer { font-weight: 500; color: #0f172a; }
+        .progress-bar { transition: width 0.4s ease; background-color: #4F46E5; }
+        
+        /* Styles pour le récapitulatif */
+        .summary-item { margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+        .summary-item:last-child { border-bottom: none; }
+        .summary-question { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 4px; font-weight: 600; }
+        .summary-answer { font-size: 1rem; font-weight: 500; color: #1e293b; }
+        
         .error-text { color: #dc2626; font-weight: 600; }
         
         /* Classe pour cacher le compteur */
         .invisible { visibility: hidden; }
+
+        /* Style des questions */
+        .question-label { color: #312E81; font-weight: 700; font-size: 1.125rem; margin-bottom: 0.75rem; display: block; }
     </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col">
@@ -55,13 +63,13 @@
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-10" id="main-header">
         <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="font-semibold text-lg text-slate-700">Étude Freelance CSM/AM/Care</h1>
+            <h1 class="font-semibold text-lg text-indigo-900">Étude Freelance CSM/AM/Care</h1>
             <div class="text-sm text-slate-500 invisible" id="step-counter-container">
                 <span id="current-step-display">1</span> / <span id="total-step-display">6</span>
             </div>
         </div>
         <div class="h-1 bg-slate-200 w-full">
-            <div id="progress" class="h-1 bg-blue-600 progress-bar" style="width: 0%"></div>
+            <div id="progress" class="h-1 progress-bar" style="width: 0%"></div>
         </div>
     </header>
 
@@ -72,7 +80,7 @@
             <!-- Step 0: Intro (Page 1) -->
             <div class="step active" data-step="0">
                 <div class="mb-6">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4 text-indigo-600">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                         </svg>
@@ -91,7 +99,7 @@
                         Si tu es freelance aujourd’hui, ou si tu l’as été par le passé, ton retour d’expérience honnête m’aiderait à avancer dans ma réflexion.
                     </p>
 
-                    <a href="https://www.linkedin.com/in/corinne-csm/" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mb-6 transition-colors group">
+                    <a href="https://www.linkedin.com/in/corinne-csm/" target="_blank" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium mb-6 transition-colors group">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
@@ -101,7 +109,7 @@
                     <p class="text-sm text-slate-400 italic border-t border-slate-100 pt-4">Temps estimé pour m'aider 🙏 : 3 minutes chrono.</p>
                 </div>
                 <div class="flex justify-end">
-                    <button type="button" onclick="goToStep(1)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors flex items-center shadow-lg shadow-blue-600/30">
+                    <button type="button" onclick="goToStep(1)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition-colors flex items-center shadow-lg shadow-indigo-600/30">
                         C'est parti
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -112,24 +120,24 @@
 
             <!-- Step 1: Profil (Page 2) -->
             <div class="step" data-step="1">
-                <h3 class="text-xl font-semibold mb-6">Partie 1 : Profil & Contexte</h3>
+                <h3 class="text-xl font-semibold mb-6 text-slate-400 uppercase tracking-widest text-sm">Partie 1 : Profil & Contexte</h3>
                 
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <!-- Q1 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">1. Depuis combien de temps es-tu freelance ?</label>
+                        <label class="question-label">1. Depuis combien de temps es-tu freelance ?</label>
                         <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="radio" name="q1" value="Moins de 6 mois" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Moins de 6 mois</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q1" value="6 à 12 mois" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">6 à 12 mois</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q1" value="1 à 3 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">1 à 3 ans</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q1" value="Plus de 3 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Plus de 3 ans</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q1" value="Moins de 6 mois" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Moins de 6 mois</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q1" value="6 à 12 mois" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">6 à 12 mois</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q1" value="1 à 3 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">1 à 3 ans</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q1" value="Plus de 3 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Plus de 3 ans</div></label>
                         </div>
                     </div>
 
                     <!-- Q2 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">2. Où es-tu basé(e) ?</label>
-                        <select name="q2" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none">
+                        <label class="question-label">2. Où es-tu basé(e) ?</label>
+                        <select name="q2" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none">
                             <option value="">Sélectionne une région...</option>
                             <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
                             <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
@@ -149,73 +157,73 @@
                         </select>
                     </div>
 
-                    <!-- Q3 (CORRIGÉ) -->
+                    <!-- Q3 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">3. Où sont basés tes clients ? (Plusieurs choix possibles)</label>
+                        <label class="question-label">3. Où sont basés tes clients ? <span class="text-sm font-normal text-slate-500 ml-2">(Plusieurs choix possibles)</span></label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-white">
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Auvergne-Rhône-Alpes" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Auvergne-Rhône-Alpes</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bourgogne-Franche-Comté" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Bourgogne-Franche-Comté</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bretagne" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Bretagne</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Centre-Val de Loire" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Centre-Val de Loire</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Corse" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Corse</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Grand Est" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Grand Est</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Hauts-de-France" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Hauts-de-France</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Île-de-France" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Île-de-France</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Normandie" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Normandie</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Nouvelle-Aquitaine" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Nouvelle-Aquitaine</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Occitanie" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Occitanie</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Pays de la Loire" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Pays de la Loire</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Provence-Alpes-Côte d'Azur" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Provence-Alpes-Côte d'Azur</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="À l'étranger" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">À l'étranger</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Je ne souhaite pas répondre" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all">Je ne souhaite pas répondre</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Auvergne-Rhône-Alpes" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Auvergne-Rhône-Alpes</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bourgogne-Franche-Comté" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Bourgogne-Franche-Comté</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Bretagne" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Bretagne</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Centre-Val de Loire" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Centre-Val de Loire</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Corse" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Corse</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Grand Est" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Grand Est</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Hauts-de-France" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Hauts-de-France</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Île-de-France" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Île-de-France</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Normandie" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Normandie</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Nouvelle-Aquitaine" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Nouvelle-Aquitaine</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Occitanie" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Occitanie</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Pays de la Loire" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Pays de la Loire</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Provence-Alpes-Côte d'Azur" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Provence-Alpes-Côte d'Azur</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="À l'étranger" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">À l'étranger</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q3" value="Je ne souhaite pas répondre" class="hidden checkbox-card mr-2"><div class="border border-slate-200 rounded-lg p-2 text-sm hover:bg-slate-50 transition-all option-text">Je ne souhaite pas répondre</div></label>
                         </div>
                     </div>
 
                     <!-- Q4 (NEW) -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">4. Quel est ton mode de travail actuel avec tes clients ?</label>
+                        <label class="question-label">4. Quel est ton mode de travail actuel avec tes clients ?</label>
                         <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="radio" name="q4" value="100% Remote" class="hidden option-card" onchange="toggleQ4Input(false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">100% Remote (Télétravail total)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q4" value="Hybride" class="hidden option-card" onchange="toggleQ4Input(false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Hybride (1 à 2 jours par semaine chez le client)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q4" value="Présentiel" class="hidden option-card" onchange="toggleQ4Input(false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Majoritairement en présentiel</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q4" value="Autre" class="hidden option-card" onchange="toggleQ4Input(true)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Autre</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q4" value="100% Remote" class="hidden option-card" onchange="toggleQ4Input(false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">100% Remote (Télétravail total)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q4" value="Hybride" class="hidden option-card" onchange="toggleQ4Input(false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Hybride (1 à 2 jours par semaine chez le client)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q4" value="Présentiel" class="hidden option-card" onchange="toggleQ4Input(false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Majoritairement en présentiel</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q4" value="Autre" class="hidden option-card" onchange="toggleQ4Input(true)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Autre</div></label>
                         </div>
                         <div id="q4_other_container" class="hidden mt-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                             <input type="text" name="q4_other" placeholder="Précise ton mode de travail..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                             <input type="text" name="q4_other" placeholder="Précise ton mode de travail..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none text-sm">
                         </div>
                     </div>
 
                     <!-- Q5 (Ex-Q2) -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">5. Quelle est ton activité principale aujourd’hui ?</label>
+                        <label class="question-label">5. Quelle est ton activité principale aujourd’hui ?</label>
                         <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="radio" name="q5" value="CSM" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Customer Success Manager (CSM)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q5" value="AM" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Account Manager</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q5" value="Ops" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Ops (RevOps, CS Ops...)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q5" value="Care" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Customer Care / Support</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q5" value="Autre" class="hidden option-card" onchange="toggleInput('q5_other_container', true)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Autre</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q5" value="CSM" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Customer Success Manager (CSM)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q5" value="AM" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Account Manager</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q5" value="Ops" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Ops (RevOps, CS Ops...)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q5" value="Care" class="hidden option-card" onchange="toggleInput('q5_other_container', false)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Customer Care / Support</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q5" value="Autre" class="hidden option-card" onchange="toggleInput('q5_other_container', true)"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Autre</div></label>
                         </div>
                         <div id="q5_other_container" class="hidden mt-2">
-                             <input type="text" name="q5_other" placeholder="Précise ton activité..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                             <input type="text" name="q5_other" placeholder="Précise ton activité..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none text-sm">
                         </div>
                     </div>
 
                     <!-- Q6 (Ex-Q3) -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">6. As-tu exercé ce métier auparavant en tant que salarié ?</label>
+                        <label class="question-label">6. As-tu exercé ce métier auparavant en tant que salarié ?</label>
                         <div class="flex gap-4">
-                            <label class="cursor-pointer flex-1"><input type="radio" name="q6" value="Oui" class="hidden option-card" onchange="toggleInput('q6_exp_container', true)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 transition-all">Oui</div></label>
-                            <label class="cursor-pointer flex-1"><input type="radio" name="q6" value="Non" class="hidden option-card" onchange="toggleInput('q6_exp_container', false)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 transition-all">Non</div></label>
+                            <label class="cursor-pointer flex-1"><input type="radio" name="q6" value="Oui" class="hidden option-card" onchange="toggleInput('q6_exp_container', true)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 transition-all option-text">Oui</div></label>
+                            <label class="cursor-pointer flex-1"><input type="radio" name="q6" value="Non" class="hidden option-card" onchange="toggleInput('q6_exp_container', false)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 transition-all option-text">Non</div></label>
                         </div>
                          <!-- Sous-question Q6 Expérience -->
-                         <div id="q6_exp_container" class="hidden mt-3 bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <label class="block font-medium text-slate-700 mb-3 text-sm">Combien d'années d'expérience ?</label>
+                         <div id="q6_exp_container" class="hidden mt-3 bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                            <label class="block font-medium text-indigo-800 mb-3 text-sm">Combien d'années d'expérience ?</label>
                             <div class="space-y-2">
-                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="Moins d'un an" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 hover:bg-white transition-all text-sm">Moins d'un an</div></label>
-                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="1 à 3 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 hover:bg-white transition-all text-sm">1 à 3 ans</div></label>
-                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="3 à 5 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 hover:bg-white transition-all text-sm">3 à 5 ans</div></label>
-                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="5 à 10 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 hover:bg-white transition-all text-sm">5 à 10 ans</div></label>
-                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="Plus de 10 ans" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 hover:bg-white transition-all text-sm">Plus de 10 ans</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="Moins d'un an" class="hidden option-card"><div class="border border-indigo-200 bg-white rounded-lg p-2 hover:bg-white transition-all text-sm option-text">Moins d'un an</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="1 à 3 ans" class="hidden option-card"><div class="border border-indigo-200 bg-white rounded-lg p-2 hover:bg-white transition-all text-sm option-text">1 à 3 ans</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="3 à 5 ans" class="hidden option-card"><div class="border border-indigo-200 bg-white rounded-lg p-2 hover:bg-white transition-all text-sm option-text">3 à 5 ans</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="5 à 10 ans" class="hidden option-card"><div class="border border-indigo-200 bg-white rounded-lg p-2 hover:bg-white transition-all text-sm option-text">5 à 10 ans</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="q6_exp" value="Plus de 10 ans" class="hidden option-card"><div class="border border-indigo-200 bg-white rounded-lg p-2 hover:bg-white transition-all text-sm option-text">Plus de 10 ans</div></label>
                             </div>
                         </div>
                     </div>
@@ -223,16 +231,16 @@
                     <!-- Q7 & Q8 -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block font-medium text-slate-700 mb-3">7. Sexe</label>
+                            <label class="question-label">7. Sexe</label>
                             <div class="space-y-2">
-                                <label class="cursor-pointer block"><input type="radio" name="genre" value="Femme" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-center hover:bg-slate-50">Femme</div></label>
-                                <label class="cursor-pointer block"><input type="radio" name="genre" value="Homme" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-center hover:bg-slate-50">Homme</div></label>
-                                <label class="cursor-pointer block"><input type="radio" name="genre" value="Ne souhaite pas répondre" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-center hover:bg-slate-50">Ne souhaite pas répondre</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="genre" value="Femme" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-center hover:bg-slate-50 option-text">Femme</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="genre" value="Homme" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-center hover:bg-slate-50 option-text">Homme</div></label>
+                                <label class="cursor-pointer block"><input type="radio" name="genre" value="Ne souhaite pas répondre" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-2 text-center hover:bg-slate-50 option-text">Ne souhaite pas répondre</div></label>
                             </div>
                         </div>
                         <div>
-                            <label class="block font-medium text-slate-700 mb-3">8. Tranche d'âge</label>
-                             <select name="age" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none">
+                            <label class="question-label">8. Tranche d'âge</label>
+                             <select name="age" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none">
                                 <option value="">Choisir...</option>
                                 <option value="18-24">18 - 24 ans</option>
                                 <option value="25-34">25 - 34 ans</option>
@@ -247,29 +255,29 @@
                 
                 <div class="flex justify-between mt-8">
                     <button type="button" onclick="goToStep(0)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
-                    <button type="button" onclick="goToStep(2)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Suivant</button>
+                    <button type="button" onclick="goToStep(2)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-indigo-600/30">Suivant</button>
                 </div>
             </div>
 
             <!-- Step 2: Marché (Page 3) -->
             <div class="step" data-step="2">
-                <h3 class="text-xl font-semibold mb-6">Partie 2 : Le Marché & L'Acquisition</h3>
+                <h3 class="text-xl font-semibold mb-6 text-slate-400 uppercase tracking-widest text-sm">Partie 2 : Le Marché & L'Acquisition</h3>
                 
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <!-- Q9 (Checkbox) -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">9. Comment trouves-tu tes clients majoritairement ? (Plusieurs choix possibles)</label>
+                        <label class="question-label">9. Comment trouves-tu tes clients majoritairement ? <span class="text-sm font-normal text-slate-500 ml-2">(Plusieurs choix possibles)</span></label>
                         <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Réseau" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Réseau personnel / Bouche-à-oreille</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Plateformes" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Plateformes (Malt, Crème de la crème...)</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Prospection" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Prospection directe (LinkedIn, Cold Email)</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Apporteur" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all">Apport d'affaires / Agences</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Réseau" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Réseau personnel / Bouche-à-oreille</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Plateformes" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Plateformes (Malt, Crème de la crème...)</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Prospection" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Prospection directe (LinkedIn, Cold Email)</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q9" value="Apporteur" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all option-text">Apport d'affaires / Agences</div></label>
                         </div>
                     </div>
 
                     <!-- Q10: Typologie Clients (Checkbox + Autre) -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">10. Pour quels types de clients as-tu déjà travaillé en freelance ? (Plusieurs choix possibles)</label>
+                        <label class="question-label">10. Pour quels types de clients as-tu déjà travaillé en freelance ? <span class="text-sm font-normal text-slate-500 ml-2">(Plusieurs choix possibles)</span></label>
                         <div class="grid grid-cols-1 gap-2">
                             <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Startup (early stage)" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Startup (early stage)</span><span class="block text-xs text-slate-500 mt-1">(jeune entreprise, souvent < 20 salariés)</span></div></label>
                             <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Scale-up" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Scale-up</span><span class="block text-xs text-slate-500 mt-1">(startup en forte croissance, environ 50 à 300 salariés)</span></div></label>
@@ -281,30 +289,30 @@
                             <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Collectif de freelances" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Collectif de freelances</span><span class="block text-xs text-slate-500 mt-1">(regroupement de freelances travaillant ensemble sur des missions)</span></div></label>
                             <label class="cursor-pointer block h-full"><input type="checkbox" name="q10_clients" value="Autre" class="hidden checkbox-card" onchange="toggleCheckboxOther(this, 'q10_clients_other')"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 transition-all h-full"><span class="font-medium text-slate-800">Autre (à préciser)</span></div></label>
                         </div>
-                        <input type="text" id="q10_clients_other" name="q10_clients_other_text" placeholder="Préciser..." class="w-full mt-2 border border-slate-300 rounded-lg p-2 text-sm focus:border-blue-500 outline-none hidden">
+                        <input type="text" id="q10_clients_other" name="q10_clients_other_text" placeholder="Préciser..." class="w-full mt-2 border border-slate-300 rounded-lg p-2 text-sm focus:border-indigo-500 outline-none hidden">
                     </div>
 
                     <!-- Q11 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">11. Est-il difficile de convaincre une entreprise de prendre un freelance sur des métiers "Relation Client" ?</label>
+                        <label class="question-label">11. Est-il difficile de convaincre une entreprise de prendre un freelance sur des métiers "Relation Client" ?</label>
                         <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Très difficile" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Très difficile (beaucoup de pédagogie nécessaire)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Moyennement difficile" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Moyennement difficile</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Non" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Non, les entreprises sont habituées</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Très difficile" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Très difficile (beaucoup de pédagogie nécessaire)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Moyennement difficile" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Moyennement difficile</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q11" value="Non" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Non, les entreprises sont habituées</div></label>
                         </div>
                     </div>
 
                     <!-- Q12 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">12. T'est-il déjà arrivé de te retrouver sans mission pendant une longue période ?</label>
+                        <label class="question-label">12. T'est-il déjà arrivé de te retrouver sans mission pendant une longue période ?</label>
                         <div class="space-y-3">
                             <div class="flex gap-4">
-                                <label class="cursor-pointer flex-1"><input type="radio" name="q12_gap" value="Oui" class="hidden option-card" onchange="toggleInput('gap_duration_container', true)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Oui</div></label>
-                                <label class="cursor-pointer flex-1"><input type="radio" name="q12_gap" value="Non" class="hidden option-card" onchange="toggleInput('gap_duration_container', false)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Non</div></label>
+                                <label class="cursor-pointer flex-1"><input type="radio" name="q12_gap" value="Oui" class="hidden option-card" onchange="toggleInput('gap_duration_container', true)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 transition-all option-text">Oui</div></label>
+                                <label class="cursor-pointer flex-1"><input type="radio" name="q12_gap" value="Non" class="hidden option-card" onchange="toggleInput('gap_duration_container', false)"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 transition-all option-text">Non</div></label>
                             </div>
-                            <div id="gap_duration_container" class="hidden mt-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                                <label class="block text-sm text-slate-600 mb-2">Si oui, pendant combien de temps ?</label>
-                                <input type="text" name="q12_gap_duration" placeholder="Ex: 2 mois entre deux contrats..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                            <div id="gap_duration_container" class="hidden mt-2 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
+                                <label class="block text-sm text-indigo-800 mb-2">Si oui, pendant combien de temps ?</label>
+                                <input type="text" name="q12_gap_duration" placeholder="Ex: 2 mois entre deux contrats..." class="w-full border border-indigo-200 rounded-lg p-3 focus:border-indigo-500 outline-none text-sm">
                             </div>
                         </div>
                     </div>
@@ -312,19 +320,19 @@
 
                 <div class="flex justify-between mt-8">
                     <button type="button" onclick="goToStep(1)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
-                    <button type="button" onclick="goToStep(3)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Suivant</button>
+                    <button type="button" onclick="goToStep(3)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-indigo-600/30">Suivant</button>
                 </div>
             </div>
 
             <!-- Step 3: Finance (Page 4) -->
             <div class="step" data-step="3">
-                <h3 class="text-xl font-semibold mb-6">Partie 3 : Réalité Financière & Organisation</h3>
+                <h3 class="text-xl font-semibold mb-6 text-slate-400 uppercase tracking-widest text-sm">Partie 3 : Réalité Financière & Organisation</h3>
                 
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <!-- Q13 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">13. Combien de temps après ton lancement as-tu commencé à générer des revenus réguliers ?</label>
-                        <select name="q13" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none">
+                        <label class="question-label">13. Combien de temps après ton lancement as-tu commencé à générer des revenus réguliers ?</label>
+                        <select name="q13" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-indigo-500 outline-none">
                             <option value="">Sélectionne une option...</option>
                             <option value="Immédiatement">Immédiatement</option>
                             <option value="Moins de 3 mois">Moins de 3 mois</option>
@@ -337,19 +345,19 @@
 
                     <!-- Q14 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">14. Selon toi, quel est le TJM minimal pour être viable ?</label>
+                        <label class="question-label">14. Selon toi, quel est le TJM minimal pour être viable ?</label>
                         <div class="grid grid-cols-2 gap-2">
-                             <label class="cursor-pointer block"><input type="radio" name="q14" value="<300" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Moins de 300€</div></label>
-                             <label class="cursor-pointer block"><input type="radio" name="q14" value="300-350" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">300€ - 350€</div></label>
-                             <label class="cursor-pointer block"><input type="radio" name="q14" value="350-450" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">350€ - 450€</div></label>
-                             <label class="cursor-pointer block"><input type="radio" name="q14" value=">450" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50">Plus de 450€</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value="<300" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 option-text">Moins de 300€</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value="300-350" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 option-text">300€ - 350€</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value="350-450" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 option-text">350€ - 450€</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q14" value=">450" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 text-center hover:bg-slate-50 option-text">Plus de 450€</div></label>
                         </div>
                     </div>
 
                     <!-- Q15 (Ex-Q12) -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">15. En moyenne, quel montant te verses-tu réellement sur ton compte personnel chaque mois (après charges professionnelles, avant impôt sur le revenu) ?</label>
-                        <select name="q15" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none">
+                        <label class="question-label">15. En moyenne, quel montant te verses-tu réellement sur ton compte personnel chaque mois (après charges, avant impôt) ?</label>
+                        <select name="q15" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-indigo-500 outline-none">
                             <option value="">Sélectionne une option...</option>
                             <option value="<2000">Moins de 2000€</option>
                             <option value="2000-3000">Entre 2000€ et 3000€</option>
@@ -361,40 +369,40 @@
 
                      <!-- Q16 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">16. Quel statut juridique as-tu choisi ?</label>
+                        <label class="question-label">16. Quel statut juridique as-tu choisi ?</label>
                         <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Micro-entreprise" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Micro-entreprise (Auto-entrepreneur)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="EI" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">EI (Entreprise Individuelle)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Société" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Société (EURL, SASU...)</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Portage Salarial" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Portage Salarial</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Autre" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Autre</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Micro-entreprise" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Micro-entreprise (Auto-entrepreneur)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="EI" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">EI (Entreprise Individuelle)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Société" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Société (EURL, SASU...)</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Portage Salarial" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Portage Salarial</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q16_status" value="Autre" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Autre</div></label>
                         </div>
                     </div>
 
                     <!-- Q17 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">17. Pour tes déclarations (URSSAF, TVA), comment t'organises-tu ?</label>
+                        <label class="question-label">17. Pour tes déclarations (URSSAF, TVA), comment t'organises-tu ?</label>
                         <div class="space-y-2">
                             <label class="cursor-pointer block">
                                 <input type="radio" name="q17" value="Manuel" class="hidden option-card" onchange="toggleInput('q17_app_container', false)">
-                                <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Je gère moi-même mes déclarations, de façon autonome</div>
+                                <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Je gère moi-même mes déclarations, de façon autonome</div>
                             </label>
                             
                             <!-- Option APP et son champ lié -->
                             <div>
                                 <label class="cursor-pointer block">
                                     <input type="radio" name="q17" value="App" class="hidden option-card" onchange="toggleInput('q17_app_container', true)">
-                                    <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">J’utilise un outil ou une application pour m’accompagner dans mes déclarations</div>
+                                    <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">J’utilise un outil ou une application pour m’accompagner</div>
                                 </label>
-                                <div id="q17_app_container" class="hidden mt-2 ml-4 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                                     <label class="block text-sm text-slate-600 mb-2">Quelle application utilises-tu ? (Indy, Abby, Tiime...)</label>
-                                     <input type="text" name="q17_app_name" placeholder="Ex: Indy, Freebe..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                                <div id="q17_app_container" class="hidden mt-2 ml-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
+                                     <label class="block text-sm text-indigo-800 mb-2">Quelle application utilises-tu ? (Indy, Abby, Tiime...)</label>
+                                     <input type="text" name="q17_app_name" placeholder="Ex: Indy, Freebe..." class="w-full border border-indigo-200 rounded-lg p-3 focus:border-indigo-500 outline-none text-sm">
                                 </div>
                             </div>
 
                             <label class="cursor-pointer block">
                                 <input type="radio" name="q17" value="Comptable" class="hidden option-card" onchange="toggleInput('q17_app_container', false)">
-                                <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Je délègue ces démarches à un expert-comptable</div>
+                                <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Je délègue ces démarches à un expert-comptable</div>
                             </label>
                         </div>
                     </div>
@@ -402,30 +410,30 @@
 
                 <div class="flex justify-between mt-8">
                     <button type="button" onclick="goToStep(2)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
-                    <button type="button" onclick="goToStep(4)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Suivant</button>
+                    <button type="button" onclick="goToStep(4)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-indigo-600/30">Suivant</button>
                 </div>
             </div>
 
              <!-- Step 4: Charge Mentale (Page 5) -->
              <div class="step" data-step="4">
-                <h3 class="text-xl font-semibold mb-6">Partie 4 : Charge Mentale</h3>
+                <h3 class="text-xl font-semibold mb-6 text-slate-400 uppercase tracking-widest text-sm">Partie 4 : Charge Mentale</h3>
                 
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <!-- Q18 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">18. Par rapport au salariat, le freelance a été pour toi :</label>
+                        <label class="question-label">18. Par rapport au salariat, le freelance a été pour toi :</label>
                          <div class="space-y-2">
-                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Beaucoup plus stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Beaucoup plus stressant 😰</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Un peu plus stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Un peu plus stressant 😟</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Équivalent" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Équivalent 😐</div></label>
-                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Moins stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Moins stressant 😌</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Beaucoup plus stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Beaucoup plus stressant 😰</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Un peu plus stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Un peu plus stressant 😟</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Équivalent" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Équivalent 😐</div></label>
+                            <label class="cursor-pointer block"><input type="radio" name="q18" value="Moins stressant" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Moins stressant 😌</div></label>
                         </div>
                     </div>
 
                     <!-- Q19 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">19. Ce qui te pèse le plus aujourd’hui :</label>
-                        <select name="q19" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-blue-500 outline-none" onchange="toggleSelectOther(this, 'q19_other_container')">
+                        <label class="question-label">19. Ce qui te pèse le plus aujourd’hui :</label>
+                        <select name="q19" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-indigo-500 outline-none" onchange="toggleSelectOther(this, 'q19_other_container')">
                             <option value="">Sélectionne...</option>
                             <option value="Trouver des clients">Trouver des clients (l'incertitude commerciale)</option>
                             <option value="Irrégularité revenus">L’irrégularité des revenus</option>
@@ -435,68 +443,68 @@
                             <option value="Autre">Autre (préciser)</option>
                         </select>
                         <div id="q19_other_container" class="hidden mt-2">
-                             <input type="text" name="q19_other" placeholder="Précise ce qui te pèse..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none text-sm">
+                             <input type="text" name="q19_other" placeholder="Précise ce qui te pèse..." class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none text-sm">
                         </div>
                     </div>
 
                     <!-- Q20 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">20. La chose la plus difficile à laquelle tu ne t’attendais pas ?</label>
-                        <textarea name="q20" rows="3" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none" placeholder="Ta réponse..."></textarea>
+                        <label class="question-label">20. La chose la plus difficile à laquelle tu ne t’attendais pas ?</label>
+                        <textarea name="q20" rows="3" class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none" placeholder="Ta réponse..."></textarea>
                     </div>
                 </div>
 
                 <div class="flex justify-between mt-8">
                     <button type="button" onclick="goToStep(3)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
-                    <button type="button" onclick="goToStep(5)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Suivant</button>
+                    <button type="button" onclick="goToStep(5)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-indigo-600/30">Suivant</button>
                 </div>
             </div>
 
             <!-- Step 5: Bilan (Page 6) -->
             <div class="step" data-step="5">
-                <h3 class="text-xl font-semibold mb-6">Partie 5 : Bilan & Conseils</h3>
+                <h3 class="text-xl font-semibold mb-6 text-slate-400 uppercase tracking-widest text-sm">Partie 5 : Bilan & Conseils</h3>
                 
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <!-- Q21 (Checkbox + Autre) -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">21. Selon toi, quels sont les arguments de vente qui priment ? (Plusieurs choix possibles)</label>
+                        <label class="question-label">21. Selon toi, quels sont les arguments de vente qui priment ? <span class="text-sm font-normal text-slate-500 ml-2">(Plusieurs choix possibles)</span></label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Formation / Certifications" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Formation / Certifications</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Expérience passée" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Expérience passée</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Réseau" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Réseau / Recommandations</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Soft Skills / Personnalité" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Soft Skills / Personnalité</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Prix / TJM" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Prix / TJM</div></label>
-                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Autre" class="hidden checkbox-card" onchange="toggleCheckboxOther(this, 'q21_args_other')"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Autre</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Formation / Certifications" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Formation / Certifications</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Expérience passée" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Expérience passée</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Réseau" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Réseau / Recommandations</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Soft Skills / Personnalité" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Soft Skills / Personnalité</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Prix / TJM" class="hidden checkbox-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Prix / TJM</div></label>
+                            <label class="cursor-pointer block"><input type="checkbox" name="q21_args" value="Autre" class="hidden checkbox-card" onchange="toggleCheckboxOther(this, 'q21_args_other')"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Autre</div></label>
                         </div>
-                        <input type="text" id="q21_args_other" name="q21_args_other_text" placeholder="Préciser..." class="w-full mt-2 border border-slate-300 rounded-lg p-2 text-sm focus:border-blue-500 outline-none hidden">
+                        <input type="text" id="q21_args_other" name="q21_args_other_text" placeholder="Préciser..." class="w-full mt-2 border border-slate-300 rounded-lg p-2 text-sm focus:border-indigo-500 outline-none hidden">
                     </div>
 
                     <!-- Q22 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">22. Recommanderais-tu de se lancer en 2026 ?</label>
+                        <label class="question-label">22. Recommanderais-tu de se lancer en 2026 ?</label>
                         <div class="space-y-2">
-                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Oui" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Oui, c'est le bon moment 🚀</div></label>
-                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Oui mais" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Oui, mais avec beaucoup de prudence ⚠️</div></label>
-                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Non" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">Non, le marché est trop saturé ⛔</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Oui" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Oui, c'est le bon moment 🚀</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Oui mais" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Oui, mais avec beaucoup de prudence ⚠️</div></label>
+                             <label class="cursor-pointer block"><input type="radio" name="q22" value="Non" class="hidden option-card"><div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50 option-text">Non, le marché est trop saturé ⛔</div></label>
                         </div>
                     </div>
 
                     <!-- Q23 -->
                     <div>
-                        <label class="block font-medium text-slate-700 mb-3">23. Si tu avais un seul conseil factuel à donner :</label>
-                        <textarea name="q23" rows="3" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none" placeholder="Ton conseil en or..."></textarea>
+                        <label class="question-label">23. Si tu avais un seul conseil factuel à donner :</label>
+                        <textarea name="q23" rows="3" class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none" placeholder="Ton conseil en or..."></textarea>
                     </div>
                 </div>
 
                 <div class="flex justify-between mt-8">
                     <button type="button" onclick="goToStep(4)" class="text-slate-500 hover:text-slate-700 font-medium">Retour</button>
-                    <button type="button" onclick="goToStep(6)" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/30">Dernière étape</button>
+                    <button type="button" onclick="goToStep(6)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-lg shadow-indigo-600/30">Dernière étape</button>
                 </div>
             </div>
 
             <!-- Step 6: Restitution (Page 7) -->
             <div class="step" data-step="6">
-                <h3 class="text-xl font-semibold mb-6">Restitution des résultats</h3>
+                <h3 class="text-xl font-semibold mb-6 text-indigo-900">Restitution des résultats</h3>
                 
                 <div class="text-center py-6">
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
@@ -510,12 +518,12 @@
                     </p>
                     
                     <div class="space-y-4 max-w-sm mx-auto mb-6">
-                        <input type="text" name="pseudo" placeholder="Prénom ou Pseudo (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none">
-                        <input type="email" name="email" placeholder="ton@email.com (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none">
-                        <input type="url" name="linkedin" placeholder="Lien profil LinkedIn (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-blue-500 outline-none">
+                        <input type="text" name="pseudo" placeholder="Prénom ou Pseudo (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none">
+                        <input type="email" name="email" placeholder="ton@email.com (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none">
+                        <input type="url" name="linkedin" placeholder="Lien profil LinkedIn (facultatif)" class="w-full border border-slate-300 rounded-lg p-3 focus:border-indigo-500 outline-none">
                     </div>
 
-                    <button type="button" onclick="goToStep(7)" class="w-full max-w-sm bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:-translate-y-1">
+                    <button type="button" onclick="goToStep(7)" class="w-full max-w-sm bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:-translate-y-1">
                         Vérifier mes réponses
                     </button>
                 </div>
@@ -526,9 +534,9 @@
 
             <!-- Step 7: Récapitulatif (Page 8) -->
             <div class="step" data-step="7">
-                <h3 class="text-xl font-semibold mb-6">Récapitulatif avant envoi</h3>
+                <h3 class="text-xl font-semibold mb-6 text-indigo-900">Récapitulatif avant envoi</h3>
                 
-                <div class="bg-slate-50 rounded-lg p-6 max-h-[60vh] overflow-y-auto mb-6 border border-slate-200" id="summaryContainer">
+                <div class="bg-white rounded-lg p-6 max-h-[60vh] overflow-y-auto mb-6 border border-slate-200" id="summaryContainer">
                     <!-- Le résumé sera généré ici par JS -->
                 </div>
 
@@ -553,7 +561,7 @@
             <!-- Step 8: Thank You -->
             <div class="step" data-step="8">
                 <div class="text-center py-10">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 animate-bounce">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6 text-indigo-600 animate-bounce">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
@@ -571,7 +579,7 @@
                     <h2 class="text-3xl font-bold text-slate-800 mb-4">Dommage !</h2>
                     <p class="text-slate-600 mb-6">Je ne t'en veux pas. Une prochaine fois peut-être.</p>
                     
-                    <button type="button" onclick="location.reload()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-md">
+                    <button type="button" onclick="location.reload()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-md">
                         Recommencer à zéro
                     </button>
                 </div>
