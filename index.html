@@ -97,7 +97,7 @@
                     </p>
                     
                     <p class="text-slate-600 mb-4 leading-relaxed">
-                        J'ai préparé ce questionnaire pour recueillir ton expérience.<br>
+                        J'ai préparé ce questionnaire pour recueillir ton retour d'expérience.<br>
                         ⏱️ Ça prend 3 minutes max.<br>
                         🔒 C'est 100% anonyme.<br>
                         🎁 <strong>Bonus :</strong> Si le résultat de l'enquête t'intéresse (TJM, tendances...), tu pourras laisser tes coordonnées (mail, Linkedin) à la fin pour recevoir la synthèse. C'est totalement facultatif.
@@ -145,14 +145,11 @@
                         <label class="question-label">2. Où es-tu basé(e) ?</label>
                         <select name="q2" class="w-full border border-slate-300 rounded-lg p-3 bg-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none">
                             <option value="">Sélectionne une région...</option>
-                            <option value="Je ne souhaite pas répondre">Je ne souhaite pas répondre</option>
-                            <option value="À l'étranger">À l'étranger</option>
                             <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
                             <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
                             <option value="Bretagne">Bretagne</option>
                             <option value="Centre-Val de Loire">Centre-Val de Loire</option>
                             <option value="Corse">Corse</option>
-                            <option value="DOM-TOM">DOM-TOM</option>
                             <option value="Grand Est">Grand Est</option>
                             <option value="Hauts-de-France">Hauts-de-France</option>
                             <option value="Île-de-France">Île-de-France</option>
@@ -161,6 +158,8 @@
                             <option value="Occitanie">Occitanie</option>
                             <option value="Pays de la Loire">Pays de la Loire</option>
                             <option value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+                            <option value="À l'étranger">À l'étranger</option>
+                            <option value="Je ne souhaite pas répondre">Je ne souhaite pas répondre</option>
                         </select>
                     </div>
 
@@ -830,7 +829,6 @@
                     // Required only if Q6 is Oui
                     if (!groupedData['q6'] || !groupedData['q6'].includes('Oui')) isActuallyRequired = false;
                 }
-                // Removed q12_gap_duration conditional logic as it's gone
                 
                 // Special handling for "Autre" text fields requirements
                 // We check if parent has "Autre" or similar trigger, then check if text field is filled
