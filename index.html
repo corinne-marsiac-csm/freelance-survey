@@ -158,7 +158,6 @@
                             <option value="Île-de-France">Île-de-France</option>
                             <option value="Normandie">Normandie</option>
                             <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
-                            <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
                             <option value="Occitanie">Occitanie</option>
                             <option value="Pays de la Loire">Pays de la Loire</option>
                             <option value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
@@ -350,7 +349,7 @@
                         </select>
                     </div>
 
-                    <!-- Q14 -->
+                    <!-- Q14 (UPDATED TJM) -->
                     <div>
                         <label class="question-label">14. Quel est ton TJM (Taux Journalier Moyen) actuel ?</label>
                         <div class="grid grid-cols-2 gap-2">
@@ -516,9 +515,7 @@
                 <h3 class="text-xl font-semibold mb-6 text-indigo-900">Restitution des résultats</h3>
                 
                 <div class="text-center py-6">
-                    <div class="w-24 h-24 mx-auto mb-6">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=300&q=80" alt="Analyse de données" class="w-full h-full object-cover rounded-full shadow-lg border-4 border-indigo-50">
-                    </div>
+                    <div class="text-6xl mb-6">🙏</div> 
                     
                     <p class="text-slate-600 mb-8 leading-relaxed">
                         Merci beaucoup pour ton temps ! <br><br>
@@ -833,7 +830,6 @@
                     // Required only if Q6 is Oui
                     if (!groupedData['q6'] || !groupedData['q6'].includes('Oui')) isActuallyRequired = false;
                 }
-                // Removed q12_gap_duration conditional logic as it's gone
                 
                 // Special handling for "Autre" text fields requirements
                 // We check if parent has "Autre" or similar trigger, then check if text field is filled
